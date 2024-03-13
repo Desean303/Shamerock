@@ -1,0 +1,89 @@
+import pygame
+pygame.init
+
+
+### class definition--------------------------------------------
+class clover:
+    def __init__(self, xpos, ypos):
+        self.xpos = xpos
+        self.ypos = ypos
+        
+    def draw(self):
+        #stem
+        pygame.draw.rect(screen, (0,150,85), (self.xpos-10, self.ypos+20, 15, 50))
+        
+        #leaves
+        pygame.draw.circle(screen, (0,151,0), (self.xpos-20, self.ypos+20), 20) 
+        pygame.draw.circle(screen, (85,150,0), (self.xpos, self.ypos-10), 20)
+        pygame.draw.circle(screen, (0,151,0), (self.xpos+20, self.ypos+20), 20)
+        
+### class definition--------------------------------------------
+class holiday:
+    def __init__(self, xpos, ypos):
+        self.xpos = xpos
+        self.ypos = ypos
+        
+    def draw(self):
+        Link = pygame.image.load('Cesar.c.JPEG') #load your spritesheet
+        Link = pygame.transform.scale(Link,(100, 100))
+        screen.blit(Link, (self.xpos, self.ypos))
+
+
+# end of class definition-----------------------------------------
+
+#stamp (aka instantiate) clovers
+clover1 = clover(200, 200)
+clover2 = clover(400, 400)
+clover3 = clover(100, 400)
+clover4 = clover(100, 600)
+clover5 = clover(200, 400)
+picture = holiday(100,100)
+picture2 = holiday(240,100)
+picture3 = holiday(150,100)
+picture4 = holiday(150,450)
+
+
+
+#creates game screen and caption
+screen = pygame.display.set_mode((800, 800))
+pygame.display.set_caption("clover class demo")
+
+#game variables
+doExit = False #variable to quit out of game loop
+clock = pygame.time.Clock() #sets up a game clock to regulate game speed
+
+
+#BEGIN GAME LOOP######################################################
+while not doExit:
+   
+    clock.tick(60) #FPS (frames per second)
+   
+    #pygame's way of listening for events (key presses, mouse clicks, etc)
+    for event in pygame.event.get():
+        if event.type == pygame.QUIT:
+           doExit = True #lets you quit program
+
+    #keyboard input-----------------------------------
+  
+     
+    #render section-----------------------------------
+ 
+
+    #draw class objects
+    clover1.draw()
+    clover2.draw()
+    clover3.draw()
+    clover4.draw()
+    clover5.draw()
+    
+    picture.draw()
+    picture2.draw()
+    picture3.draw()
+    picture4.draw()
+    
+  
+
+    pygame.display.flip() #update graphics each game loop
+
+#END GAME LOOP#######################################################
+pygame.quit()
